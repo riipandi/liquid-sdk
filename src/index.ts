@@ -1,5 +1,6 @@
 import { SDKConfig } from './config';
-import Account from './accounts';
+import Account from './account';
+import Reseller from './reseller';
 
 class LiquidSDK {
   config: SDKConfig;
@@ -12,6 +13,6 @@ class LiquidSDK {
   }
 }
 
-export { Account };
+export { Account, Reseller };
 
 export default LiquidSDK;
