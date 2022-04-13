@@ -1,0 +1,53 @@
+{
+  "name": "liquid-sdk",
+  "version": "0.1.0",
+  "description": "Unofficial SDK for Liqu.id domain reseller",
+  "author": "Aris Ripandi <riipandi@gmail.com> (https://github.com/riipandi)",
+  "keywords": [
+    "api",
+    "client",
+    "domain",
+    "node",
+    "sdk"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [ "dist/**/*" ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "test": "jest",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "dependencies": {
+    "axios": "^0.26.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "codecov": "^3.8.3",
+    "dotenv": "^16.0.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.4",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.6.3"
+  },
+  "homepage": "https://github.com/riipandi/liquid-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riipandi/liquid-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/riipandi/liquid-sdk/issues"
+  }
+}
