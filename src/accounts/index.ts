@@ -8,6 +8,18 @@ class Account {
   async getBalance(): Promise<any> {
     return await getRequest('/account/balance', this.config);
   }
+
+  async getPrices(): Promise<any> {
+    return await getRequest('/account/prices', this.config);
+  }
+
+  async getTransactions(): Promise<any> {
+    return await getRequest('/account/transactions', this.config);
+  }
+
+  async getTransactionDetail(id: string): Promise<any> {
+    return await getRequest(`/account/transactions/${id}`, this.config);
+  }
 }
 
 export default Account;

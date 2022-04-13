@@ -13,19 +13,22 @@
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [ "dist/**/*" ],
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "test": "jest",
-    "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
+    "format": "prettier --write \"src/**/*.ts\"",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.26.1"
