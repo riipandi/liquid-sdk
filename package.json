@@ -1,50 +1,39 @@
 {
-  "name": "liquid-sdk",
   "version": "0.1.0",
-  "description": "Unofficial SDK for Liqu.id domain reseller",
-  "author": "Aris Ripandi <riipandi@gmail.com> (https://github.com/riipandi)",
-  "keywords": [
-    "api",
-    "client",
-    "domain",
-    "node",
-    "sdk"
-  ],
   "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "files": [
-    "dist/**/*"
+    "dist",
+    "src"
   ],
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch",
-    "clean": "rimraf dist",
-    "prebuild": "npm run clean",
-    "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags",
-    "test": "jest"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
   },
-  "dependencies": {
-    "axios": "^0.26.1"
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
   },
-  "devDependencies": {
-    "@types/jest": "^27.4.1",
-    "codecov": "^3.8.3",
-    "dotenv": "^16.0.0",
-    "jest": "^27.5.1",
-    "prettier": "^2.6.2",
-    "rimraf": "^3.0.2",
-    "ts-jest": "^27.1.4",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint": "^6.1.3",
-    "typescript": "^4.6.3"
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
+  "name": "liquid-sdk",
+  "description": "Unofficial SDK for Liqu.id domain reseller",
+  "author": "Aris Ripandi (https://github.com/riipandi)",
   "homepage": "https://github.com/riipandi/liquid-sdk#readme",
   "repository": {
     "type": "git",
@@ -52,5 +41,27 @@
   },
   "bugs": {
     "url": "https://github.com/riipandi/liquid-sdk/issues"
+  },
+  "module": "dist/liquid-sdk.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/liquid-sdk.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/liquid-sdk.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "dependencies": {
+    "axios": "^0.26.1"
+  },
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "husky": "^7.0.4",
+    "size-limit": "^7.0.8",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.3"
   }
 }
